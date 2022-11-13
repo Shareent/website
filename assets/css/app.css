@@ -1,0 +1,15 @@
+a.link{
+    text-decoration: none;
+}
+.app-btn{
+    background-image: linear-gradient( to right bottom, #037ec8, #3d19ea );
+    color:#fff;
+}
+
+/* Custom colors */
+:root {
+    --color-primary: #20a4f3;
+    --color-secondary: #ff0035;
+    --color-tertiary: #fff4e4;
+    --color-white: #ffff;
+  }
