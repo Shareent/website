@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (accType == 'buyer') {
             $('#user-account-type').innerHTML =
                 `<div class="alert alert-info">
-            <p class="m-0">You are registering as a <strong>buyer</strong>
+            <p class="m-0">You are signing up as a <strong>Buyer</strong></p>
         </div>`
         } else {
             $('#user-account-type').innerHTML =
                 `<div class="alert alert-info">
-            <p class="m-0">You are signing up as an <strong>office owner</strong>
+            <p class="m-0">You are signing up as an <strong>Agent</strong></p>
         </div>`
         }
 
