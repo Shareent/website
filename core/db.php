@@ -1,9 +1,9 @@
 <?php
 //SOME CONSTANTS HERE
 DEFINE ('DB_HOST', 'localhost');
-DEFINE ('DB_USER', 'root');
-DEFINE ('DB_PASS', 'fKF}Sl*Nj]N7<0U!');
-DEFINE ('DB_NAME', 'sharent');
+DEFINE ('DB_USER', 'mentopac_shareent');
+DEFINE ('DB_PASS', 'PEp)-sVmqIv{');
+DEFINE ('DB_NAME', 'mentopac_shareent');
 
 class DatabaseClass{    
     

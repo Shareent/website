@@ -1,5 +1,5 @@
-const regUrl = 'core/api/register.php';
-const loginUrl = 'core/api/login.php';
+const regUrl = 'https://mentopace.com.ng/shareent/core/api/register.php';
+const loginUrl = 'https://mentopace.com.ng/shareent/core/api/login.php';
 
 document.addEventListener('DOMContentLoaded', () => {
     const $ = (elem) => document.querySelector(elem);

@@ -21,13 +21,16 @@
     .form-group {
       margin: 30px 0;
     }
-    .auth-form-section{
+
+    .auth-form-section {
       padding: 20px;
       background-color: #fff;
       border-radius: 10px;
-      max-width: 720px;
+      max-width: 500px;
       margin: 50px auto;
+      box-shadow: 0px 0px 8px #ddd;
     }
+
     .section-desc {
       margin: 20px 0;
       max-width: 300px;
@@ -36,72 +39,6 @@
 </head>
 
 <body id="register">
-  <div class="d-none user-sign-up-container">
-    <!-- Sign Up area  -->
-    <section class="user-sign-up sign-up-cont hidden">
-      <div class="sign-up-txt-area">
-        <img src="./imgs/Sharent2.png" alt="sharent Logo" class="logo" />
-        <h1 class="creat-acct">Hello, Friend!</h1>
-        <p class="creat-acct__sub-txt">
-          Enter your personal details and get started
-        </p>
-        <button class="sign-up-btn" id="sign-up-btn">Sign Up</button>
-        <button class="sign-in-btn" id="sign-in-btn">Or Sign In</button>
-      </div>
-      <div class="sign-up__form-section">
-        <h1 class="sign-in-txt">Create Acoount</h1>
-        <form action="dashboard">
-          <div class="form-inuput-fields">
-            <input type="text" name="Name" id="" placeholder="Full Name" class="form-inuput-fields__main" />
-          </div>
-          <div class="form-inuput-fields">
-            <input type="email" name="email" placeholder="Email" class="form-inuput-fields__main" />
-          </div>
-          <div class="form-inuput-fields">
-            <input type="password" name="password" id="" placeholder="Password" class="form-inuput-fields__main" />
-          </div>
-          <div class="form-inuput-fields">
-            <input type="password" name="password" placeholder="Confirm Password" class="form-inuput-fields__main" />
-          </div>
-          <input type="submit" value="Submit" class="sign-up-btn sign-up-btn-submit" />
-        </form>
-        <button class="sign-in-btn sign-in-btn__mobile" id="sign-in-btn">
-          Or Sign In
-        </button>
-      </div>
-    </section>
-
-    <!-- Sign in Area -->
-    <section class="user-sign-up sign-in-cont">
-      <div class="sign-up__form-section" id="sign-in__form-section">
-        <h1 class="sign-in-txt">Sign In</h1>
-        <form action="dashboard">
-          <div class="form-inuput-fields">
-            <input type="email" name="email" placeholder="Email" class="form-inuput-fields__main" />
-          </div>
-          <div class="form-inuput-fields">
-            <input type="password" name="password" placeholder="Password" class="form-inuput-fields__main" />
-          </div>
-
-          <input type="submit" value="Submit" class="sign-up-btn sign-in-btn-submit" />
-        </form>
-        <button class="sign-in-btn sign-up-btn__mobile" id="sign-up-btn">
-          Or Sign Up
-        </button>
-      </div>
-      <div class="sign-up-txt-area" id="sign-in-txt-area">
-        <img src="./imgs/Sharent2.png" alt="sharent Logo" class="logo" />
-        <h1 class="creat-acct">Welcome Back!</h1>
-        <p class="creat-acct__sub-txt">
-          To stay connected with us, please Login <br />
-          with your personal info
-        </p>
-        <button class="sign-up-btn" id="sign-in-btn">Sign In</button>
-        <button class="sign-in-btn" id="sign-up-btn">Or Sign Up</button>
-      </div>
-    </section>
-  </div>
-
   <div class="container">
     <main>
       <section class="auth-form-section">
@@ -130,10 +67,11 @@
             <label class="form-label">Confirm password</label>
             <input type="password" id="inp_conpass" class="form-control" name="confirm_password" equalto="inp_pass"
               ov-equalto-msg="Both passwords do not match" placeholder="Re-enter your password" />
-              </div>
-            <div class="form-group mt-4">
-              <button type="submit" class="btn app-btn btn-block w-100 primary">Register</button>
-              <p class="text-center mt-3">Already have an account? <a class="link" href="login.html">Click here to login</a></p>
+          </div>
+          <div class="form-group mt-4">
+            <button type="submit" class="btn app-btn btn-block w-100 primary">Register</button>
+            <p class="text-center mt-3">Already have an account? <a class="link" href="login.html">Click here to
+                login</a></p>
           </div>
         </form>
       </section>
