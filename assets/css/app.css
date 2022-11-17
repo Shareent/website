@@ -1,9 +1,17 @@
+#register{
+    /* background-color: #ff0035; */
+        background-image: linear-gradient( to right, #ff0035, #3d19ea );
+}
+
 a.link{
     text-decoration: none;
+    /* color: #ff0035; */
 }
 .app-btn{
     background-image: linear-gradient( to right bottom, #037ec8, #3d19ea );
     color:#fff;
+    background-color: #ff0035;
+
 }
 
 /* Custom colors */
@@ -13,3 +21,8 @@ a.link{
     --color-tertiary: #fff4e4;
     --color-white: #ffff;
   }
+
+  input,button,#user-account-type{
+    max-width: 1500px;
+}
+  

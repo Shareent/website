@@ -586,14 +586,12 @@ a:hover {
 
 .btn.btn-b-n {
   background-color: var(--color-primary);
-  /* background-image: linear-gradient(to right, var(--color-secondary), var(--color-primary)); */
-  color: #ffffff;
   border-radius: 0;
+  color: #ffffff;
 }
 
 .btn.btn-b-n:hover {
   background-color: var(--color-secondary);
-  /* background-image: linear-gradient(to right,var(--color-primary), var(--color-secondary)); */
   color: #ffffff;
 }
 
@@ -2249,8 +2247,8 @@ footer .credits {
 }
 
 .services-img img {
-  width: 70%;
-  border-radius: 10px;
+  width: 80%;
+  border-radius: 5px;
 }
 
 .services h1 {
