@@ -565,13 +565,12 @@ a:hover {
 
 .btn.btn-a {
   text-decoration: none;
-  background-color: #000000;
+  background-color: var(--color-primary);
   color: #ffffff;
 }
 
 .btn.btn-a:hover {
   background-color: var(--color-secondary);
-  color: #000000;
 }
 
 .btn.btn-b {
@@ -1680,19 +1679,19 @@ a:hover {
   }
 }
 
-.card-footer-c {
+/* .card-footer-c {
   padding-left: 0.5rem;
-}
+} */
 
-.card-box-ico {
+/* .card-box-ico {
   padding: 1rem 3rem 1rem 2.5rem;
   border: 5px solid var(--color-secondary);
-}
+} */
 
-.card-box-ico span {
+/* .card-box-ico span {
   font-size: 4rem;
   color: #000000;
-}
+} */
 
 .title-c {
   font-size: 2.5rem;

@@ -1,17 +1,19 @@
 #register{
-    /* background-color: #ff0035; */
         background-image: linear-gradient( to right, #ff0035, #3d19ea );
 }
 
 a.link{
     text-decoration: none;
-    /* color: #ff0035; */
 }
 .app-btn{
-    background-image: linear-gradient( to right bottom, #037ec8, #3d19ea );
+    background-image: linear-gradient( to right, #3d19ea, #ff0035 );
     color:#fff;
     background-color: #ff0035;
+}
 
+.app-btn:hover{
+    background-image: linear-gradient( to right, #ff0035, #3d19ea );
+    color:#fff;
 }
 
 /* Custom colors */
