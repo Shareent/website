@@ -1,4 +1,5 @@
 <?php
+
 require('./core/app.php');
 //check if user is an agent or a buyer //only agents are allowed
 if ($user['acc_type'] !== "agent") {
@@ -9,6 +10,9 @@ if ($user['acc_type'] !== "agent") {
 if ($profile && $user['acc_type'] == "agent") {
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["space_img"]["name"]);
+        move_uploaded_file($_FILES["space_img"]["tmp_name"], $target_file);
         $db->Insert("INSERT INTO spaces (user_id, space_name, space_addr, space_type, space_desc, space_price,date_added) VALUES (:uid, :name, :addr, :type, :desc, :price, :date)", [
             'uid' => $user['user_id'],
             'name' => $_POST['space_name'],
@@ -73,7 +77,7 @@ if (isset($_SESSION['success']) && isset($_SESSION['msg'])) {
                         <a href="./" class="btn btn-primary">Visit the dashboard</a>
                     </div>
                 </div>
-                <form class="row g-3" method="post" id="form_add_space" novalidate>
+                <form class="row g-3" method="post" id="form_add_space" novalidate enctype="multipart/form-data">
                     <div class="mb-2">
                         <label for="address" class="form-label">Name of Space</label>
                         <input id="inp_s_name" octavalidate="R,ALPHA_SPACES" name="space_name" type="text"
@@ -90,10 +94,15 @@ if (isset($_SESSION['success']) && isset($_SESSION['msg'])) {
                             <option value="Work Spaces">Work spaces</option>
                         </select>
                     </div>
+                    <div class="mb-2">
+                        <label for="address" class="form-label">Space Image</label>
+                        <input id="inp_s_file" octavalidate="R" maxsize="5mb" accept-mime="image/*" name="space_img" type="file"
+                            class="form-control" />
+                    </div>
                     <label for="amount" class="form-label">Set your price</label>
                     <div class="input-group mb-2 mt-0">
                         <span class="input-group-text" id="naira">&#8358;</span>
-                        <input name="space_price" id="inp_s_price" octavalidate="R,DIGITS" value="111" type="text"
+                        <input name="space_price" id="inp_s_price" octavalidate="R,DIGITS" value="5000" type="text"
                             class="form-control" aria-label="Amount (to the nearest naira)" aria-describedby="naira" />
                     </div>
                     <div class="mb-2">

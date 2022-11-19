@@ -179,18 +179,16 @@ if ($spaces) {
 
         <!-- Budget Report -->
         <div class="card">
-          <div class="card-body pb-0 mt-4>
-            
-                <div
-                  id=" budgetChart" style="min-height: 400px" class="echart ">
-            <video class="" autoplay width="100%" muted loop>
-              <source src="./assets/videos/Sharent.mp4" type="video/mp4">
-              Your browser is not supported!
-            </video>
+          <div class="card-body pb-0 mt-4">
+            <div id="budgetChart" style="min-height: 400px" class="echart">
+              <video class="" width="100%" controls="true">
+                <source src="./assets/videos/sharent2.mp4" type="video/mp4">
+                Your browser is not supported!
+              </video>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- End Video -->
+        <!-- End Video -->
 
       </div>
       <!-- End Right side columns -->
