@@ -16,14 +16,21 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     if(isset($_POST['action']) && !empty($_POST['action']) 
     && isset($_POST['space_id']) && !empty($_POST['space_id'])){
         $action = $_POST['action'];
-        
-            //check if space belongs to agent
-            $checkSpace = $db->SelectOne("SELECT * FROM spaces WHERE spaces.user_id = :uid AND spaces.id = :id", ['uid' => $user['user_id'], 'id' => $_POST['space_id']]);
+        //check if space belongs to agent
+        $checkSpace = $db->SelectOne("SELECT * FROM spaces WHERE spaces.user_id = :uid AND spaces.id = :id", ['uid' => $user['user_id'], 'id' => $_POST['space_id']]);
         //delete space
         if($action == 'del-space' && $checkSpace){
             //if the space is for the user
                 $db->Remove("DELETE FROM spaces WHERE spaces.id = :id AND spaces.user_id = :uid", ['uid' => $user['user_id'], 'id' => $checkSpace['id']]);
-
+                $spaceImg = "uploads/".$checkSpace['space_img'];
+                //if space has an img file
+                if($spaceImg){
+                    //if file exists
+                    if(file_exists($spaceImg)){
+                        //delete the file
+                        unlink($spaceImg);
+                    }
+                }
                 $_SESSION['msg'] = "Space has been deleted successfully";
                 $_SESSION['success'] = true;
                 header("Location: ./my-spaces");
@@ -33,7 +40,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         if($action == 'verify-space' && $checkSpace){
             //if the space is for the user
                 $db->Update("UPDATE spaces SET space_cac = :cac, is_verified = :ver WHERE id = :id  AND user_id = :uid", ['uid' => $user['user_id'], 'cac' => $_POST['space_cac'], 'id' => $checkSpace['id'], 'ver' => 'yes']);
-
                 $_SESSION['msg'] = "Space has been verified successfully";
                 $_SESSION['success'] = true;
                 header("Location: ./my-spaces");
