@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 19, 2022 at 06:50 AM
+-- Generation Time: Nov 19, 2022 at 11:00 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS `spaces` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(100) NOT NULL,
   `space_name` varchar(50) NOT NULL,
+  `space_img` varchar(100) DEFAULT NULL,
   `space_addr` varchar(100) NOT NULL,
   `space_type` varchar(50) NOT NULL,
   `space_price` varchar(50) NOT NULL,
@@ -65,7 +66,16 @@ CREATE TABLE IF NOT EXISTS `spaces` (
   `is_verified` varchar(5) NOT NULL DEFAULT 'no',
   `date_added` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `spaces`
+--
+
+INSERT INTO `spaces` (`id`, `user_id`, `space_name`, `space_img`, `space_addr`, `space_type`, `space_price`, `space_desc`, `space_cac`, `is_verified`, `date_added`) VALUES
+(4, '10d2610d466a37d22ee041feb0978c00', 'Ssss', NULL, 'sssssssss', 'house', '111333333333', 'sssssssssss', NULL, 'no', '1668843158'),
+(5, '10d2610d466a37d22ee041feb0978c00', 'Ighub Workspace', NULL, 'seseee', 'house', '5000', 'seseseseee', NULL, 'no', '1668855063'),
+(6, '10d2610d466a37d22ee041feb0978c00', 'Ighub Workspacess', NULL, 'sssss', 'land', '5000', 'sssss', NULL, 'no', '1668855107');
 
 -- --------------------------------------------------------
 

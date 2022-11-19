@@ -11,18 +11,19 @@ if ($profile && $user['acc_type'] == "agent") {
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         $target_dir = "uploads/";
+        $space_img = $_FILES["space_img"]["name"];
         $target_file = $target_dir . basename($_FILES["space_img"]["name"]);
         move_uploaded_file($_FILES["space_img"]["tmp_name"], $target_file);
-        $db->Insert("INSERT INTO spaces (user_id, space_name, space_addr, space_type, space_desc, space_price,date_added) VALUES (:uid, :name, :addr, :type, :desc, :price, :date)", [
+        $db->Insert("INSERT INTO spaces (user_id, space_name, space_addr, space_type, space_desc, space_price,date_added, space_img) VALUES (:uid, :name, :addr, :type, :desc, :price, :date, :img)", [
             'uid' => $user['user_id'],
             'name' => $_POST['space_name'],
             'type' => $_POST['space_type'],
             'desc' => $_POST['space_desc'],
             'price' => $_POST['space_price'],
             'addr' => $_POST['space_addr'],
-            'date' => time()
+            'date' => time(),
+            'img' => $space_img
         ]);
-
 
         $_SESSION['msg'] = "Space Added Successfully";
         $_SESSION['success'] = true;

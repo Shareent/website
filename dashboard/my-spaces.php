@@ -92,11 +92,14 @@ if (isset($_SESSION['success']) && isset($_SESSION['msg'])) {
                             
                     <div class="card mb-3" width="100%" id="<?php print('space -'.$childKey); ?>">
                         <div class="pb-2 card-title text-center">
-                            <h5>
+                            <h6 class="title display-6">
                                 <?php print($space['space_name']); ?>
-                            </h5>
+                            </h6>
                         </div>
                         <div class="card-body">
+                            <div class="mb-4">
+                                <img src="./uploads/<?php print($space['space_img']); ?>" class="card-img" alt="my_space_img" style="width: 100%;height: 300px;">
+                            </div>
                             <table class="table table-bordered">
                                 <tbody>
                                     <tr>
