@@ -1679,20 +1679,6 @@ a:hover {
   }
 }
 
-/* .card-footer-c {
-  padding-left: 0.5rem;
-} */
-
-/* .card-box-ico {
-  padding: 1rem 3rem 1rem 2.5rem;
-  border: 5px solid var(--color-secondary);
-} */
-
-/* .card-box-ico span {
-  font-size: 4rem;
-  color: #000000;
-} */
-
 .title-c {
   font-size: 2.5rem;
   font-weight: 600;
@@ -2151,6 +2137,7 @@ a:hover {
   padding-top: 60px;
   margin-top: 60px;
   background: #f3f3f3;
+  gap: 50px;
 }
 
 .section-footer ul {
