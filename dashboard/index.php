@@ -166,10 +166,10 @@ if ($spaces) {
               </div>
 
               <div class="activity-item d-flex mt-4">
-                <img src="./assets/img/flier2.jpeg" alt="" width="100%">
+                <img src="./assets/img/flier3.jpeg" alt="" width="100%">
               </div>
               <div class="activity-item d-flex mt-4">
-                <img src="./assets/img/flier2.jpeg" alt="" width="100%">
+                <img src="./assets/img/flier4.jpeg" alt="" width="100%">
               </div>
               <!-- End activity item-->
             </div>
