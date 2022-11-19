@@ -32,7 +32,7 @@
   <div class="click-closed"></div>
   <!--/ Form Search Star /-->
   <?php include('includes/search.php'); ?>
-  <!-- End Property Search Section -->>
+  <!-- End Property Search Section -->
 
   <!-- ======= Header/Navbar ======= -->
   <?php include('includes/navbar.php'); ?>
@@ -119,14 +119,71 @@
           <div class="col-md-4">
             <div class="card-box-d">
               <div class="card-img-d">
-                <img src="assets/img/agent-7.jpg" alt="" class="img-d img-fluid">
+                <img src="assets/imgs/Simeon.jpeg" alt="" class="img-d img-fluid">
               </div>
               <div class="card-overlay card-overlay-hover">
                 <div class="card-header-d">
                   <div class="card-title-d align-self-center">
                     <h3 class="title-d">
-                      <a href="agent-single.html" class="link-two">Margaret Sotillo
-                        <br> Escala</a>
+                      <a href="agent-single.html" class="link-two"> Simon
+                        <br> Ugorji</a>
+                    </h3>
+                  </div>
+                </div>
+                <div class="card-body-d">
+                  <p class="content-d color-text-a">
+                    Simon Ugorji is a backend web developer and a Technical Writer on PHP and JavaScript with over 2 years of
+                    experience.
+                    He loves to build projects and write Technical articles on PHP & JavaScript </p>
+                  <div class="info-agents color-a">
+                    <p>
+                      <strong>Phone: </strong> 08102990898
+                    </p>
+                    <p>
+                      <strong>Email: </strong> ugorji757@gmail.com
+                    </p>
+                  </div>
+                </div>
+                <div class="card-footer-d">
+                  <div class="socials-footer d-flex justify-content-center">
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-facebook" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-twitter" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-instagram" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-linkedin" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-box-d">
+              <div class="card-img-d">
+                <img src="assets/imgs/Ichie.jpeg" alt="" class="img-d img-fluid">
+              </div>
+              <div class="card-overlay card-overlay-hover">
+                <div class="card-header-d">
+                  <div class="card-title-d align-self-center">
+                    <h3 class="title-d">
+                      <a href="agent-single.html" class="link-two"> Victor
+                        <br> Ogbonna</a>
                     </h3>
                   </div>
                 </div>
@@ -372,7 +429,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <?php include('includes/footer.php');?>
+  <?php include('includes/footer.php'); ?>
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
