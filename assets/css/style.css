@@ -1942,9 +1942,10 @@ a:hover {
 }
 
 .testimonials-box .testimonial-avatar {
-  width: 80px !important;
+  width: 65px !important;
   display: inline-flex !important;
   border-radius: 50%;
+  height: 65px !important;
 }
 
 .testimonial-ico {
@@ -2137,7 +2138,6 @@ a:hover {
   padding-top: 60px;
   margin-top: 60px;
   background: #f3f3f3;
-  gap: 50px;
 }
 
 .section-footer ul {
@@ -2169,8 +2169,6 @@ footer .credits {
   font-size: 14px;
 }
 
-
-/* services */
 /* --service-- */
 
 #service {
