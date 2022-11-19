@@ -79,7 +79,7 @@ if(isset($_SESSION['auth']) && !empty($_SESSION['auth'])){
               ov-equalto-msg="Both passwords do not match" placeholder="Re-enter your password" />
           </div>
           <div class="form-group mt-4">
-            <button type="submit" class="btn app-btn btn-block w-100 primary">Register</button>
+            <button type="submit" class="btn btn-primary btn-block w-100 primary">Register</button>
             <p class="text-center mt-3">Already have an account? <a class="link" href="login.html">Click here to
                 login</a></p>
           </div>
