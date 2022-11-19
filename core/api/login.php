@@ -1,4 +1,5 @@
 <?php
+session_start();
 //import database class
 require '../db.php';
 //import functions
@@ -28,7 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             "success" => true,
             "message" => "Login successful"
         );
-
+        //set session
+        $_SESSION['auth'] = array(
+            "token" => $user['user_id'],
+            "type" => $user['acc_type']
+        );
         print_r(json_encode($retval));
         
     } catch (Exception $e) {

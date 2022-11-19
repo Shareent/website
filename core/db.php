@@ -2,8 +2,8 @@
 //SOME CONSTANTS HERE
 DEFINE ('DB_HOST', 'localhost');
 DEFINE ('DB_USER', 'root');
-DEFINE ('DB_PASS', 'fKF}Sl*Nj]N7<0U!');
-DEFINE ('DB_NAME', 'sharent');
+DEFINE ('DB_PASS', '');
+DEFINE ('DB_NAME', 'shareent');
 
 class DatabaseClass{    
     

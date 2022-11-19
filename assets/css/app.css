@@ -1,16 +1,17 @@
-#register{
-        background-image: linear-gradient( to right, #ff0035, #3d19ea );
+#register {
+    /* background-color: #ff0035; */
+    background-image: #f7f7f7;
 }
 
-a.link{
+a.link {
     text-decoration: none;
 }
-.app-btn{
-    background-image: linear-gradient( to right, #3d19ea, #ff0035 );
-    color:#fff;
+
+.app-btn {
+    background-image: linear-gradient(to right bottom, #037ec8, #3d19ea);
+    color: #fff;
     background-color: #ff0035;
 }
-
 .app-btn:hover{
     background-image: linear-gradient( to right, #ff0035, #3d19ea );
     color:#fff;
@@ -22,9 +23,10 @@ a.link{
     --color-secondary: #ff0035;
     --color-tertiary: #fff4e4;
     --color-white: #ffff;
-  }
+}
 
-  input,button,#user-account-type{
+input,
+button,
+#user-account-type {
     max-width: 1500px;
 }
-  
