@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>EstateAgency Bootstrap Template - Index</title>
+  <title>Sharent</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -22,7 +22,7 @@
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
+  <!-- Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
@@ -46,7 +46,6 @@
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
               <h1 class="title-single">Our Amazing Properties</h1>
-              <span class="color-text-a">Grid Properties</span>
             </div>
           </div>
           <div class="col-md-12 col-lg-4">
@@ -56,7 +55,7 @@
                   <a href="#">Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  Properties Grid
+                  Properties
                 </li>
               </ol>
             </nav>
@@ -90,13 +89,13 @@
                 <div class="card-overlay-a-content">
                   <div class="card-header-a">
                     <h2 class="card-title-a">
-                      <a href="#">204 Mount
-                        <br /> Olive Road Two</a>
+                      <a href="#">Lekki Phase
+                        <br /> One , Lagos</a>
                     </h2>
                   </div>
                   <div class="card-body-a">
                     <div class="price-box d-flex">
-                      <span class="price-a">rent | $ 12.000</span>
+                      <span class="price-a">rent | # 2,500,000</span>
                     </div>
                     <a href="#" class="link-a">Click here to view
                       <span class="bi bi-chevron-right"></span>
@@ -112,7 +111,7 @@
                       </li>
                       <li>
                         <h4 class="card-info-title">Beds</h4>
-                        <span>2</span>
+                        <span>4</span>
                       </li>
                       <li>
                         <h4 class="card-info-title">Baths</h4>
@@ -131,7 +130,9 @@
           <div class="col-md-4">
             <div class="card-box-a card-shadow">
               <div class="img-box-a">
-                <img src="assets/img/property-3.jpg" alt="" class="img-a img-fluid">
+                <img src="assets/imgs/pexels-sharad-kachhi-3937174.jpg"
+                
+                alt="" class="img-a img-fluid">
               </div>
               <div class="card-overlay">
                 <div class="card-overlay-a-content">
@@ -143,7 +144,7 @@
                   </div>
                   <div class="card-body-a">
                     <div class="price-box d-flex">
-                      <span class="price-a">rent | $ 12.000</span>
+                      <span class="price-a">rent | # 50,000</span>
                     </div>
                     <a href="#" class="link-a">Click here to view
                       <span class="bi bi-chevron-right"></span>
@@ -316,6 +317,7 @@
               </div>
             </div>
           </div>
+          
           <div class="col-md-4">
             <div class="card-box-a card-shadow">
               <div class="img-box-a">
@@ -440,15 +442,6 @@
                     <i class="bi bi-chevron-right"></i> <a href="#">Legal</a>
                   </li>
                   <li class="item-list-a">
-                    <i class="bi bi-chevron-right"></i> <a href="#">Agent Admin</a>
-                  </li>
-                  <li class="item-list-a">
-                    <i class="bi bi-chevron-right"></i> <a href="#">Careers</a>
-                  </li>
-                  <li class="item-list-a">
-                    <i class="bi bi-chevron-right"></i> <a href="#">Affiliate</a>
-                  </li>
-                  <li class="item-list-a">
                     <i class="bi bi-chevron-right"></i> <a href="#">Privacy Policy</a>
                   </li>
                 </ul>
@@ -498,7 +491,7 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
+  <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
 </body>

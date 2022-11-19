@@ -135,7 +135,7 @@
       </div>
     </div>
       <div class="swiper-slide carousel-item-a intro-item bg-image"
-        style="background-image: url(assets/img/slide-3.jpg)">
+        style="background-image: url(assets/imgs/dylan-de-jonge-9SjCXUq_qSE-unsplash.jpg)">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -257,7 +257,7 @@
                       <div class="price-box d-flex">
                         <span class="price-a">rent | $ 12.000</span>
                       </div>
-                      <a href="#" class="link-a">Click here to view
+                      <a href="property-single-house1.html" class="link-a">Click here to view
                         <span class="bi bi-chevron-right"></span>
                       </a>
                     </div>
@@ -447,9 +447,6 @@
               <div class="title-text">
                 <p>BEST AGENTS</p>
               </div>
-              <!-- <div class="title-box">
-                <h2 class="title-a">Best Agents</h2>
-              </div> -->
               <div class="title-link">
                 <a href="agents.php">All Agents
                   <span class="bi bi-chevron-right"></span>
@@ -666,9 +663,6 @@
                         "I am highly satisfied with the property management staff and services of Sharent. It's not easy
                         leaving your valuable assets in someone else's hands, but without hesitation, I immediately felt
                         comfortable and assured with their approach and technological efficiency.
-                        Everything they promised was delivered above my expectations. The staff were equally efficient
-                        and professional each time I needed their assistance.
-                        Thanks again for alleviating apprehensions and delivering good services with your unique styles.
                       </p>
                     </div>
                     <div class="testimonial-author-box">
@@ -710,6 +704,33 @@
               </div>
             </div><!-- End carousel item -->
 
+            <div class="carousel-item-a swiper-slide">
+              <div class="testimonials-box">
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-img">
+                      <img src="assets/imgs/mubarak-showole-Ve7xjKImd28-unsplash.jpg" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <div class="testimonial-ico">
+                      <i class="bi bi-chat-quote-fill"></i>
+                    </div>
+                    <div class="testimonials-content">
+                      <p class="testimonial-text">
+                        Everything they promised was delivered above my expectations. The staff were equally efficient
+                        and professional each time I needed their assistance.
+                        Thanks again for alleviating apprehensions and delivering good services with your unique
+                        styles
+                      </p>
+                    </div>
+                    <div class="testimonial-author-box">
+                      <img src="assets/imgs/mubarak-showole-Ve7xjKImd28-unsplash.jpg" alt="" class="testimonial-avatar">
+                      <h5 class="testimonial-author">Ifeanyi Uwaoma</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
         <div class="testimonial-carousel-pagination carousel-pagination"></div>
@@ -724,7 +745,7 @@
   <!-- ======= Footer ======= -->
   <section class="section-footer">
     <div class="container">
-      <div class="row">
+      <div class="row" style="justify-content: space-between;">
         <div class="col-sm-12 col-md-4">
           <div class="widget-a">
             <div class="w-header-a">
