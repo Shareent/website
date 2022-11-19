@@ -20,7 +20,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="property-grid">Property</a>
+            <a class="nav-link " href="property">Property</a>
           </li>
 
           <li class="nav-item">
@@ -38,7 +38,6 @@
               <a class="dropdown-item " href="register?account-type=buyer">As a buyer</a>
             </div>
           </li>
-         
         </ul>
       </div>
 
