@@ -5,13 +5,16 @@
 
 a.link {
     text-decoration: none;
-    /* color: #ff0035; */
 }
 
 .app-btn {
     background-image: linear-gradient(to right bottom, #037ec8, #3d19ea);
     color: #fff;
     background-color: #ff0035;
+}
+.app-btn:hover{
+    background-image: linear-gradient( to right, #ff0035, #3d19ea );
+    color:#fff;
 }
 
 /* Custom colors */
