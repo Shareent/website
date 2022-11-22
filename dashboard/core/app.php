@@ -14,6 +14,10 @@ $user = $db->selectOne(
     "SELECT * FROM users WHERE users.user_id = :id",
     ['id' => $_SESSION['auth']['token']]
 );
+if(!$user){
+    header("Location: ./logout");
+    exit();
+}
 $profile = $db->selectOne(
     "SELECT * FROM profile WHERE profile.user_id = :id",
     ['id' => $_SESSION['auth']['token']]
