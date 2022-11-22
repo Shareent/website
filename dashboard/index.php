@@ -1,18 +1,26 @@
 <?php
 require('core/app.php');
 
-//all spaces
-$spaces = $db->SelectAll("SELECT * FROM spaces WHERE user_id = :uid", ['uid' => $user['user_id']]);
+$spaces = $booked_spaces = $spaces_count = $price = '';
 
-//count total spaces
-$spaces_count = ($spaces) ? count($spaces) : 0;
-//total price
-$price = 0;
-if ($spaces) {
-  foreach ($spaces as $i => $space) {
-    $price += intval($space['space_price']);
+if ($user['acc_type'] == "agent") {
+  //all spaces
+  $spaces = $db->SelectAll("SELECT * FROM spaces WHERE user_id = :uid AND is_booked = :book", ['uid' => $user['user_id'], 'book' => 'no']);
+
+  //count total spaces
+  $spaces_count = ($spaces) ? count($spaces) : 0;
+  //total price
+  $price = 0;
+  if ($spaces) {
+    foreach ($spaces as $i => $space) {
+      $price += intval($space['space_price']);
+    }
   }
+} else {
+  //get the user's booked spaces
+  $booked_spaces = $db->SelectOne("SELECT * FROM spaces WHERE spaces.is_verified = :ver AND spaces.is_booked = :book AND spaces.booked_user = :user", ['ver' => 'yes', 'book' => 'yes', 'user' => $_SESSION['auth']['token']]);
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +47,7 @@ if ($spaces) {
 
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Welcome User</h1>
+      <h1>Welcome <?php ($profile && isset($profile['fname'])) ? print($profile['fname']) : print($name); ?></h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="./">Home</a></li>
@@ -98,15 +106,14 @@ if ($spaces) {
                 </div>
               </div>
             </div>
+            <?php if ($user['acc_type'] == "agent"): ?>
             <!-- End Reports -->
             <!-- Sales Card -->
-            <div class="col-xxl-4 col-lg-12 col-md-6 ">
+            <div class="col-xxl-6 col-lg-12 col-md-6 ">
               <div class="card info-card sales-card">
-
-
                 <div class="card-body">
                   <h5 class="card-title">
-                    <a href="./add-space">Upload your spaces </a>
+                    <a href="./add-space">My spaces </a>
                   </h5>
 
                   <div class="d-flex align-items-center">
@@ -127,11 +134,11 @@ if ($spaces) {
             <!-- End Sales Card -->
 
             <!-- Revenue Card -->
-            <div class="col-xxl-4 col-lg-12 col-md-6">
+            <div class="col-xxl-6 col-lg-12 col-md-6">
               <div class="card info-card revenue-card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Set your <span>Price</span></h5>
+                  <h5 class="card-title">Estimated <span>Earnings</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -149,6 +156,7 @@ if ($spaces) {
               </div>
             </div>
             <!-- End Revenue Card -->
+            <?php endif; ?>
           </div>
         </div>
         <!-- End Left side columns -->

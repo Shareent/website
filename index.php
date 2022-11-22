@@ -5,7 +5,7 @@ require('core/db.php');
 $db = new DatabaseClass();
 
 //only display verified spaces
-$spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v", ['v' => 'yes']);
+$spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v AND spaces.is_booked = :book", ['v' => 'yes', 'book' => 'no']);
 
 ?>
 
@@ -244,7 +244,7 @@ $spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v", [
                                 <p>LATEST PROPERTIES</p>
                             </div>
                             <div class="title-link">
-                                <a href="property-grid.html">All Property
+                                <a href="#">All Property
                                     <span class="bi bi-chevron-right"></span>
                                 </a>
                             </div>
@@ -262,13 +262,13 @@ $spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v", [
                         <div class="carousel-item-b swiper-slide">
                             <div class="card-box-a card-shadow">
                                 <div class="img-box-a">
-                                    <img src="assets/img/property-6.jpg" alt="" class="img-a img-fluid">
+                                    <img src="dashboard/uploads/<?php echo $space['space_img']; ?>" alt="" class="img-a img-fluid">
                                 </div>
                                 <div class="card-overlay">
                                     <div class="card-overlay-a-content">
                                         <div class="card-header-a">
                                             <h2 class="card-title-a">
-                                                <a href="property-single-house1.html"><?php echo ucfirst($space['space_name']); ?></a>
+                                                <a href="single-property?id=<?php echo intval($space['id']); ?>"><?php echo ucfirst($space['space_name']); ?></a>
                                             </h2>
                                         </div>
                                         <div class="card-body-a">
@@ -321,7 +321,7 @@ $spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v", [
                                     <div class="card-overlay-a-content">
                                         <div class="card-header-a">
                                             <h2 class="card-title-a">
-                                                <a href="property-single-house1.html">206 Mount
+                                                <a href="#">206 Mount
                                                     <br /> Olive Road Two</a>
                                             </h2>
                                         </div>
@@ -329,7 +329,7 @@ $spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v", [
                                             <div class="price-box d-flex">
                                                 <span class="price-a">rent | $ 12.000</span>
                                             </div>
-                                            <a href="property-single-house1.html" class="link-a">Click here to view
+                                            <a href="#" class="link-a">Click here to view
                                                 <span class="bi bi-chevron-right"></span>
                                             </a>
                                         </div>
@@ -370,7 +370,7 @@ $spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v", [
                                     <div class="card-overlay-a-content">
                                         <div class="card-header-a">
                                             <h2 class="card-title-a">
-                                                <a href="property-single-land1.html">157 West
+                                                <a href="#">157 West
                                                     <br /> Central Park</a>
                                             </h2>
                                         </div>
@@ -378,7 +378,7 @@ $spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v", [
                                             <div class="price-box d-flex">
                                                 <span class="price-a">rent | $ 12.000</span>
                                             </div>
-                                            <a href="property-single-land1.html" class="link-a">Click here to view
+                                            <a href="#" class="link-a">Click here to view
                                                 <span class="bi bi-chevron-right"></span>
                                             </a>
                                         </div>
@@ -419,7 +419,7 @@ $spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v", [
                                     <div class="card-overlay-a-content">
                                         <div class="card-header-a">
                                             <h2 class="card-title-a">
-                                                <a href="property-single-space1.html">245 Azabu
+                                                <a href="#">245 Azabu
                                                     <br /> Nishi Park let</a>
                                             </h2>
                                         </div>
@@ -427,7 +427,7 @@ $spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v", [
                                             <div class="price-box d-flex">
                                                 <span class="price-a">rent | $ 12.000</span>
                                             </div>
-                                            <a href="property-single-space1.html" class="link-a">Click here to view
+                                            <a href="#" class="link-a">Click here to view
                                                 <span class="bi bi-chevron-right"></span>
                                             </a>
                                         </div>
@@ -468,7 +468,7 @@ $spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v", [
                                     <div class="card-overlay-a-content">
                                         <div class="card-header-a">
                                             <h2 class="card-title-a">
-                                                <a href="property-single-house2.html">204 Montal
+                                                <a href="#">204 Montal
                                                     <br /> South Bela Two</a>
                                             </h2>
                                         </div>
@@ -476,7 +476,7 @@ $spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v", [
                                             <div class="price-box d-flex">
                                                 <span class="price-a">rent | $ 12.000</span>
                                             </div>
-                                            <a href="property-single-house2.html" class="link-a">Click here to view
+                                            <a href="#" class="link-a">Click here to view
                                                 <span class="bi bi-chevron-right"></span>
                                             </a>
                                         </div>
@@ -527,7 +527,7 @@ $spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v", [
                                 <p>BEST AGENTS</p>
                             </div>
                             <div class="title-link">
-                                <a href="agents-grid.html">All Agents
+                                <a href="#">All Agents
                                     <span class="bi bi-chevron-right"></span>
                                 </a>
                             </div>
@@ -545,7 +545,7 @@ $spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v", [
                                 <div class="card-header-d">
                                     <div class="card-title-d align-self-center">
                                         <h3 class="title-d">
-                                            <a href="agent-single-sonia.html" class="link-two">Sonia Kate
+                                            <a href="#" class="link-two">Sonia Kate
                                                 <br> Emmanuel</a>
                                         </h3>
                                     </div>
@@ -604,7 +604,7 @@ $spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v", [
                                 <div class="card-header-d">
                                     <div class="card-title-d align-self-center">
                                         <h3 class="title-d">
-                                            <a href="agent-single-jones.html" class="link-two">Mac Jones
+                                            <a href="#" class="link-two">Mac Jones
                                                 <br>Ferdinand</a>
                                         </h3>
                                     </div>
@@ -662,7 +662,7 @@ $spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v", [
                                 <div class="card-header-d">
                                     <div class="card-title-d align-self-center">
                                         <h3 class="title-d">
-                                            <a href="agent-single-ema.html" class="link-two">Ema Micah
+                                            <a href="#" class="link-two">Ema Micah
                                                 <br> Kingsley</a>
                                         </h3>
                                     </div>

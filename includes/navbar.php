@@ -11,18 +11,18 @@
     <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" href="./">Home</a>
+          <a class="nav-link" href="./">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="/about">About</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link " href="/property">Property</a>
+          <a class="nav-link " href="./about">About</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link " href="/contact">Contact</a>
+          <a class="nav-link " href="./property">Property</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link " href="./contact">Contact</a>
         </li>
         <!-- <li class="nav-item">
             <a class="nav-link " href="blog-grid">Blog</a>
@@ -51,7 +51,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     const location = new URL(window.location)
     document.querySelectorAll('a.nav-link')?.forEach(el => {
-      if (el.getAttribute('href').includes(location.pathname)) {
+      if (el.getAttribute('href').includes('.'+location.pathname)) {
         el.classList.toggle('active')
       }else{
         el.classList.remove('active')

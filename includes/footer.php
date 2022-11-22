@@ -60,19 +60,13 @@
                 <nav class="nav-footer">
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <a href="#">Home</a>
+                            <a href="./">Home</a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#">About</a>
+                            <a href="./about">About</a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#">Property</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">Blog</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">Contact</a>
+                            <a href="./contact">Contact</a>
                         </li>
                     </ul>
                 </nav>

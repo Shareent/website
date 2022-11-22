@@ -8,9 +8,34 @@ Sharent is a platform that assists business owners, people, or organizations wit
 
 Sharent rents out spaces to the public, rents lands, and provides for sharing of lands, flats, spaces, or offices at a reasonable price.
 
+## FEATURES
+
+In sharent, you have access to the list of features below
+
+For Agents, you have the;
+
+- Ability to update your profile
+- Ability to add a space (office space, workspace, house, land)
+- Ability to set your price for the space
+- Ability to verify your space 
+- Ability to remove a space
+
+For Buyers you have the;
+
+- Ability to update your profile
+- Ability to book a space
+- Ability to pay for a booked space
+- Ability to contact the agent
+  
 ## PREVIEW
 
-To see a preview of our prototype, [click on this link](https://shareent.mentopace.com.ng)
+To visit our prototype, [click on this link](https://shareent.mentopace.com.ng)
+
+## CONTRIBUTORS
+
+<a href="https://github.com/Shareent/website/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Shareent/website" />
+</a>
 
 ### TEAM
 

@@ -75,9 +75,9 @@ if (isset($_SESSION['success']) && isset($_SESSION['msg'])) {
 
     <?php include('includes/head.php'); ?>
     <style>
-        .should-break{
-            word-break: break-all;
-        }
+    .should-break {
+        word-break: break-all;
+    }
     </style>
 </head>
 
@@ -85,17 +85,24 @@ if (isset($_SESSION['success']) && isset($_SESSION['msg'])) {
     <main>
         <div class="container">
             <section class="section register min-vh-100 justify-content-center py-4">
+
                 <div class="container">
                     <div class="text-center mb-3">
                         <img src="assets/img/sharent.png" alt="sharent logo" width="50px" />
                         <h4>Sharent</h4>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6"></div>
+                        <div class="col-6 text-end">
+                            <a href="./" class="btn btn-primary">Visit the dashboard</a>
+                        </div>
                     </div>
                     <?php if(count($spaces)): ?>
                     <?php
                         foreach($spaces as $i => $space){
                             $childKey = rand(0, 9999);
                             ?>
-                            
+
                     <div class="card mb-3" width="100%" id="<?php print('space -'.$childKey); ?>">
                         <div class="pb-2 card-title text-center">
                             <h6 class="title display-6">
@@ -104,38 +111,39 @@ if (isset($_SESSION['success']) && isset($_SESSION['msg'])) {
                         </div>
                         <div class="card-body">
                             <div class="mb-4">
-                                <img src="./uploads/<?php print($space['space_img']); ?>" class="card-img" alt="my_space_img" style="width: 100%;height: 300px;">
+                                <img src="./uploads/<?php print($space['space_img']); ?>" class="card-img"
+                                    alt="my_space_img" style="width: 100%;height: 300px;object-fit:cover;">
                             </div>
                             <table class="table table-bordered">
                                 <tbody>
                                     <tr>
                                         <th class="w-50">Type</th>
                                         <td class="w-50 should-break">
-                                        <?php print($space['space_type']); ?>
+                                            <?php print($space['space_type']); ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th class="w-50">Price</th>
                                         <td class="w-50 should-break">
-                                        <?php print($space['space_price']); ?>
+                                            <?php print($space['space_price']); ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th class="w-50">Description</th>
                                         <td class="w-50 should-break">
-                                        <?php print($space['space_desc']); ?>
+                                            <?php print($space['space_desc']); ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th class="w-50">Address</th>
                                         <td class="w-50 should-break">
-                                        <?php print($space['space_addr']); ?>
+                                            <?php print($space['space_addr']); ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th class="w-50">Date Added</th>
                                         <td class="w-50 should-break">
-                                        <?php print(date('D M Y', $space['date_added'])); ?>
+                                            <?php print(date('D M Y', $space['date_added'])); ?>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -151,14 +159,15 @@ if (isset($_SESSION['success']) && isset($_SESSION['msg'])) {
                                 </button>
                             </form>
                             <?php if($space['is_verified'] !== 'yes') : ?>
-                            <button data-space-id="<?php print($space['id']); ?>" type="button" class="btn-verify-space btn btn-success"
-                                data-bs-toggle="modal" data-bs-target="#verifyModal">
+                            <button data-space-id="<?php print($space['id']); ?>" type="button"
+                                class="btn-verify-space btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#verifyModal">
                                 Verify Space
                             </button>
                             <?php else : ?>
-                                <button type="button" class="btn btn-success" disabled>
+                            <button type="button" class="btn btn-success" disabled>
                                 Verified <i class="fas fa-check"></i>
-                                </button>
+                            </button>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -207,10 +216,10 @@ if (isset($_SESSION['success']) && isset($_SESSION['msg'])) {
                     </div>
                     <!-- End Extra Large Modal-->
                     <?php else: ?>
-                        <div class="alert alert-info text-center p-2">
-                            <p class="m-0" style="font-size:2.3rem"><span class="bi bi-info-circle"></span></p>
-                            <p class="m-0">No spaces found. <a href="./add-space"><br>Would you like to add one?</a> </p>
-                        </div>
+                    <div class="alert alert-info text-center p-2">
+                        <p class="m-0" style="font-size:2.3rem"><span class="bi bi-info-circle"></span></p>
+                        <p class="m-0">No spaces found. <a href="./add-space"><br>Would you like to add one?</a> </p>
+                    </div>
                     <?php endif; ?>
                 </div>
             </section>
@@ -219,25 +228,25 @@ if (isset($_SESSION['success']) && isset($_SESSION['msg'])) {
     <!-- End #main -->
     <?php include('includes/foot.php'); ?>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.btn-verify-space')?.forEach(el => {
-                el.addEventListener('click', function () {
-                    if (Number(this.getAttribute('data-space-id'))) {
-                        $('#inp_space_id').val(el.getAttribute('data-space-id'))
-                    }
-                })
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.btn-verify-space')?.forEach(el => {
+            el.addEventListener('click', function() {
+                if (Number(this.getAttribute('data-space-id'))) {
+                    $('#inp_space_id').val(el.getAttribute('data-space-id'))
+                }
             })
         })
+    })
 
-        <?php
+    <?php
     if (isset($success) && isset($msg)) {
                 if ($success && !empty($msg)) {
     ?>
-                    toastr.success("<?php echo $msg; ?>")
-                    <?php
+    toastr.success("<?php echo $msg; ?>")
+    <?php
         } elseif(!$success && !empty($msg)) { ?>
-                toastr.error("<?php echo $msg; ?>")
-                <?php
+    toastr.error("<?php echo $msg; ?>")
+    <?php
         }
             }
     ?>

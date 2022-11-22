@@ -73,7 +73,7 @@ if (isset($_SESSION['auth']) && !empty($_SESSION['auth'])) {
                     </div>
                     <div class="form-group mt-4">
                         <button type="submit" class="btn btn-primary btn-block w-100">Login</button>
-                        <p class="text-center mt-3">Don't have an account? <a class="link" href="register.html">Click
+                        <p class="text-center mt-3">Don't have an account? <a class="link" href="register">Click
                                 here to register</a></p>
                     </div>
                 </form>

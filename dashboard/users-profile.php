@@ -22,22 +22,42 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $action = $_POST['action'];
         $user = $db->SelectOne("SELECT * FROM users WHERE users.user_id = :id", ['id' => $_SESSION['auth']['token']]);
         if ($action == "upd-profile" && $user) {
+            $target_dir = "uploads/";
+            $profile_img = $_FILES["profile_img"]["name"];
+            $self_desc = $_POST['self_desc'];
             $fname = $_POST['fname'];
             $lname = $_POST['lname'];
             $phone = $_POST['phone'];
             $addr = $_POST['addr'];
             //check if data exists or you update it
             if (!$profile) {
-                $db->Insert("INSERT INTO profile (user_id, fname, lname, addr, phone) VALUES (:uid, :fname, :lname, :addr, :phone)", [
+                $target_file = $target_dir . basename($_FILES["profile_img"]["name"]);
+                move_uploaded_file($_FILES["profile_img"]["tmp_name"], $target_file);
+                $db->Insert("INSERT INTO profile (user_id, fname, lname, addr, phone, profile_img, self_desc) VALUES (:uid, :fname, :lname, :addr, :phone, :profile_img, :self_desc)", [
                     'uid' => $_SESSION['auth']['token'],
+                    'profile_img' => $profile_img,
                     'fname' => $fname,
                     'lname' => $lname,
                     'phone' => $phone,
-                    'addr' => $addr
+                    'addr' => $addr,
+                    'self_desc' => $self_desc
                 ]);
             } else {
-                $db->Update("UPDATE profile SET fname = :fname, lname = :lname, addr = :addr, phone = :phone", [
+                //$profile_img = $profile['profile_img'];
+                if($profile_img){
+                    
+                    if(file_exists($target_dir.$profile['profile_img'])){
+                        unlink($target_dir.$profile['profile_img']);
+                    }
+                    
+                    $target_file = $target_dir . basename($_FILES["profile_img"]["name"]);
+                    move_uploaded_file($_FILES["profile_img"]["tmp_name"], $target_file);
+                }
+
+                $db->Update("UPDATE profile SET fname = :fname, lname = :lname, addr = :addr, phone = :phone, profile_img = :prof_img WHERE user_id = :uid", [
+                    'uid' => $_SESSION['auth']['token'],
                     'fname' => $fname,
+                    'prof_img' => $profile_img, 
                     'lname' => $lname,
                     'phone' => $phone,
                     'addr' => $addr
@@ -66,6 +86,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <meta content="" name="keywords" />
 
     <?php include('includes/head.php'); ?>
+    <style>
+    .profile .profile-card img {
+        width: 150px !important;
+        height: 150px !important;
+        max-width: unset !important;
+        object-fit: cover !important;
+    }
+    </style>
 </head>
 
 <body>
@@ -95,7 +123,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <div class="col-xl-4">
                     <div class="card">
                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-                            <img src="assets/img/dummy-propfile-pic.webp" alt="Profile" class="rounded-circle" />
+                            <img src="<?php (isset($profile) && !empty($profile) && $profile['profile_img']) ? print('uploads/'.$profile['profile_img']) : print('assets/img/dummy-propfile-pic.webp'); ?>"
+                                alt="Profile" class="rounded-circle" />
                             <h2><?php print($name); ?></h2>
                             <h3><?php print($accType); ?></h3>
                         </div>
@@ -124,7 +153,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
 
                                     <h5 class="card-title">Profile Details</h5>
-
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 profile-label">First Name</div>
                                         <div class="col-lg-9 col-md-8">
@@ -154,29 +182,45 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                                     <!-- Profile Edit Form -->
-                                    <form style="max-width:700px;margin:auto" method="post" id="form_upd_profile">
+                                    <form style="max-width:700px;margin:auto" method="post" id="form_upd_profile"
+                                        enctype="multipart/form-data">
                                         <input type="hidden" name="action" value="upd-profile">
+                                        <div class="mb-2">
+                                            <label class="form-label">Profile picture</label>
+                                            <input name="profile_img" type="file" class="form-control"
+                                                id="inp_profile_pic" octavalidate="R" maxsize="5mb"
+                                                accept-mime="image/png, image/jpg, image/jpeg" />
+                                        </div>
                                         <div class="row mb-3">
                                             <div class="col-sm-6">
                                                 <label class="form-label">First Name</label>
                                                 <input octavalidate="R,ALPHA_ONLY" name="fname" type="text"
-                                                    class="form-control" id="inp_fname" placeholder="Faith" />
+                                                    class="form-control" id="inp_fname"
+                                                    value="<?php (isset($profile) && !empty($profile) && $profile['fname']) ? print($profile['fname']) : ''; ?>"
+                                                    placeholder="Faith" />
                                             </div>
                                             <div class="col-sm-6">
                                                 <label class="form-label">Last Name</label>
                                                 <input octavalidate="R,ALPHA_ONLY" name="lname" type="text"
-                                                    class="form-control" id="inp_lname" placeholder="Okoro" />
+                                                    class="form-control" id="inp_lname"
+                                                    value="<?php (isset($profile) && !empty($profile) && $profile['lname']) ? print($profile['lname']) : ''; ?>"
+                                                    placeholder="Okoro" />
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label>Phone number</label>
                                             <input octavalidate="R,DIGITS" name="phone" minlength="11" type="text"
-                                                class="form-control" id="inp_phone" placeholder="08000000000" />
+                                                class="form-control" id="inp_phone" placeholder="08000000000"
+                                                value="<?php (isset($profile) && !empty($profile) && $profile['phone']) ? print($profile['phone']) : ''; ?>" />
                                         </div>
                                         <div class="mb-3">
                                             <label>Address</label>
-                                            <textarea id="inp_addr" class="form-control" octavalidate="R,TEXT"
-                                                name="addr"></textarea>
+                                            <textarea maxlength="50" id="inp_addr" class="form-control" octavalidate="R,TEXT"
+                                                name="addr"><?php (isset($profile) && !empty($profile) && $profile['addr']) ? print($profile['addr']) : ''; ?></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label>A little description of yourself</label>
+                                            <textarea maxlength="50" id="inp_self_desc" class="form-control" octavalidate="R,TEXT" name="self_desc"><?php (isset($profile) && !empty($profile) && $profile['self_desc']) ? print($profile['self_desc']) : ''; ?></textarea>
                                         </div>
                                         <div>
                                             <button type="submit" class="btn btn-primary">

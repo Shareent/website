@@ -12,16 +12,25 @@
                 <i class="bi bi-menu-button-wide"></i><span>Spaces</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="spaces-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <?php if($user['acc_type'] == "agent"): ?>
                 <li>
                     <a href="add-space">
                         <i class="bi bi-upload"></i><span>Add a Space</span>
                     </a>
                 </li>
+                
                 <li>
                     <a href="my-spaces">
                         <i class="bi bi-upload"></i><span>My Spaces</span>
                     </a>
                 </li>
+                <?php else: ?>
+                    <li>
+                    <a href="all-spaces">
+                        <i class="bi bi-upload"></i><span>Book a Space</span>
+                    </a>
+                </li>
+                <?php endif; ?>
             </ul>
         </li>
             <!-- End Profile Page Nav -->
