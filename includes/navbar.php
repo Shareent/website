@@ -51,7 +51,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     const location = new URL(window.location)
     document.querySelectorAll('a.nav-link')?.forEach(el => {
-      if (el.getAttribute('href').includes('.'+location.pathname)) {
+      if (el.getAttribute('href') == '.'+location.pathname) {
         el.classList.toggle('active')
       }else{
         el.classList.remove('active')
