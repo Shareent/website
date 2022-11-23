@@ -244,7 +244,7 @@ $spaces = $db->SelectAll("SELECT * FROM spaces WHERE spaces.is_verified = :v AND
                                 <p>LATEST PROPERTIES</p>
                             </div>
                             <div class="title-link">
-                                <a href="#">All Property
+                                <a href="property">All Property
                                     <span class="bi bi-chevron-right"></span>
                                 </a>
                             </div>

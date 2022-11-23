@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pass = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $uid = md5(time().$_POST['email']);
         //save to database
-        $insert = $db->Insert("INSERT INTO users (user_id, acc_type, email, hash, date_joined) VALUES (:uid, :type, :email, :hash, :date)", ['uid' => $uid, 'type' => $_POST['acc_type'], 'email' => $_POST['email'], 'hash' => $pass, 'date' => strtotime(time())]);
+        $insert = $db->Insert("INSERT INTO users (user_id, acc_type, email, hash, date_joined) VALUES (:uid, :type, :email, :hash, :date)", ['uid' => $uid, 'type' => $_POST['acc_type'], 'email' => $_POST['email'], 'hash' => $pass, 'date' => time()]);
 
         //return success
         http_response_code(200);

@@ -17,59 +17,71 @@ if (isset($_SESSION['success']) && isset($_SESSION['msg'])) {
     unset($_SESSION['msg']);
 }
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
-    if (isset($_POST['action']) && !empty($_POST['action'])) {
-        $action = $_POST['action'];
-        $user = $db->SelectOne("SELECT * FROM users WHERE users.user_id = :id", ['id' => $_SESSION['auth']['token']]);
-        if ($action == "upd-profile" && $user) {
-            $target_dir = "uploads/";
-            $profile_img = $_FILES["profile_img"]["name"];
-            $self_desc = $_POST['self_desc'];
-            $fname = $_POST['fname'];
-            $lname = $_POST['lname'];
-            $phone = $_POST['phone'];
-            $addr = $_POST['addr'];
-            //check if data exists or you update it
-            if (!$profile) {
-                $target_file = $target_dir . basename($_FILES["profile_img"]["name"]);
-                move_uploaded_file($_FILES["profile_img"]["tmp_name"], $target_file);
-                $db->Insert("INSERT INTO profile (user_id, fname, lname, addr, phone, profile_img, self_desc) VALUES (:uid, :fname, :lname, :addr, :phone, :profile_img, :self_desc)", [
-                    'uid' => $_SESSION['auth']['token'],
-                    'profile_img' => $profile_img,
-                    'fname' => $fname,
-                    'lname' => $lname,
-                    'phone' => $phone,
-                    'addr' => $addr,
-                    'self_desc' => $self_desc
-                ]);
-            } else {
-                //$profile_img = $profile['profile_img'];
-                if($profile_img){
-                    
-                    if(file_exists($target_dir.$profile['profile_img'])){
-                        unlink($target_dir.$profile['profile_img']);
-                    }
-                    
+    try {
+        if (isset($_POST['action']) && !empty($_POST['action'])) {
+            $action = $_POST['action'];
+            $user = $db->SelectOne("SELECT * FROM users WHERE users.user_id = :id", ['id' => $_SESSION['auth']['token']]);
+            if ($action == "upd-profile" && $user) {
+                $target_dir = "uploads/";
+                $profile_img = $_FILES["profile_img"]["name"];
+                //check image file name
+                if(strlen($profile_img) > 50){
+                    $_SESSION['success'] = false;
+                    $_SESSION['msg'] = "Please shorten the name of your image file";
+                    header("Location: ./users-profile.php");
+                    exit();
+                }
+                $self_desc = $_POST['self_desc'];
+                $fname = $_POST['fname'];
+                $lname = $_POST['lname'];
+                $phone = $_POST['phone'];
+                $addr = $_POST['addr'];
+                //check if data exists or you update it
+                if (!$profile) {
                     $target_file = $target_dir . basename($_FILES["profile_img"]["name"]);
                     move_uploaded_file($_FILES["profile_img"]["tmp_name"], $target_file);
+                    $db->Insert("INSERT INTO profile (user_id, fname, lname, addr, phone, profile_img, self_desc) VALUES (:uid, :fname, :lname, :addr, :phone, :profile_img, :self_desc)", [
+                        'uid' => $_SESSION['auth']['token'],
+                        'profile_img' => $profile_img,
+                        'fname' => $fname,
+                        'lname' => $lname,
+                        'phone' => $phone,
+                        'addr' => $addr,
+                        'self_desc' => $self_desc
+                    ]);
+                } else {
+                    //$profile_img = $profile['profile_img'];
+                    if ($profile_img) {
+
+                        if (file_exists($target_dir . $profile['profile_img'])) {
+                            unlink($target_dir . $profile['profile_img']);
+                        }
+
+                        $target_file = $target_dir . basename($_FILES["profile_img"]["name"]);
+                        move_uploaded_file($_FILES["profile_img"]["tmp_name"], $target_file);
+                    }
+
+                    $db->Update("UPDATE profile SET fname = :fname, lname = :lname, addr = :addr, phone = :phone, profile_img = :prof_img WHERE user_id = :uid", [
+                        'uid' => $_SESSION['auth']['token'],
+                        'fname' => $fname,
+                        'prof_img' => $profile_img,
+                        'lname' => $lname,
+                        'phone' => $phone,
+                        'addr' => $addr
+                    ]);
                 }
-
-                $db->Update("UPDATE profile SET fname = :fname, lname = :lname, addr = :addr, phone = :phone, profile_img = :prof_img WHERE user_id = :uid", [
-                    'uid' => $_SESSION['auth']['token'],
-                    'fname' => $fname,
-                    'prof_img' => $profile_img, 
-                    'lname' => $lname,
-                    'phone' => $phone,
-                    'addr' => $addr
-                ]);
+                $_SESSION['success'] = true;
+                $_SESSION['msg'] = "Profile updated successfully";
+                header("Location: ./users-profile.php");
             }
-
-
-            $_SESSION['success'] = true;
-            $_SESSION['msg'] = "Profile updated successfully";
-
-            header("Location: ./users-profile.php");
         }
+    } catch (Exception $e) {
+        error_log($e);
+        $_SESSION['success'] = false;
+        $_SESSION['msg'] = "A server error has occured";
+
+        header("Location: ./users-profile");
+        exit();
     }
 }
 
@@ -215,12 +227,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                         </div>
                                         <div class="mb-3">
                                             <label>Address</label>
-                                            <textarea maxlength="50" id="inp_addr" class="form-control" octavalidate="R,TEXT"
+                                            <textarea maxlength="50" id="inp_addr" class="form-control"
+                                                octavalidate="R,TEXT"
                                                 name="addr"><?php (isset($profile) && !empty($profile) && $profile['addr']) ? print($profile['addr']) : ''; ?></textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label>A little description of yourself</label>
-                                            <textarea maxlength="50" id="inp_self_desc" class="form-control" octavalidate="R,TEXT" name="self_desc"><?php (isset($profile) && !empty($profile) && $profile['self_desc']) ? print($profile['self_desc']) : ''; ?></textarea>
+                                            <textarea maxlength="50" id="inp_self_desc" class="form-control"
+                                                octavalidate="R,TEXT"
+                                                name="self_desc"><?php (isset($profile) && !empty($profile) && $profile['self_desc']) ? print($profile['self_desc']) : ''; ?></textarea>
                                         </div>
                                         <div>
                                             <button type="submit" class="btn btn-primary">

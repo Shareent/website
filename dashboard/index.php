@@ -1,9 +1,10 @@
 <?php
 require('core/app.php');
 
-$spaces = $booked_spaces = $spaces_count = $price = '';
+$spaces = $booked_spaces = $spaces_count = $price = $page_msg = '';
 
 if ($user['acc_type'] == "agent") {
+  $page_msg = "Rent out a space on our platform <span>Today</span>";
   //all spaces
   $spaces = $db->SelectAll("SELECT * FROM spaces WHERE user_id = :uid AND is_booked = :book", ['uid' => $user['user_id'], 'book' => 'no']);
 
@@ -17,6 +18,7 @@ if ($user['acc_type'] == "agent") {
     }
   }
 } else {
+  $page_msg = "Book a space on our platform <span>Today</span>";
   //get the user's booked spaces
   $booked_spaces = $db->SelectOne("SELECT * FROM spaces WHERE spaces.is_verified = :ver AND spaces.is_booked = :book AND spaces.booked_user = :user", ['ver' => 'yes', 'book' => 'yes', 'user' => $_SESSION['auth']['token']]);
 }
@@ -66,7 +68,7 @@ if ($user['acc_type'] == "agent") {
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">
-                    Rent out your space on our platform <span>Today</span>
+                    <?php echo $page_msg; ?>
                   </h5>
 
                   <!-- Line Chart -->

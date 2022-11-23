@@ -46,29 +46,38 @@ if ($user['acc_type'] !== "agent") {
     exit();
 }
 //IF USER HAS UPDATED HIS PROFILE
-if ($profile && $user['acc_type'] == "agent") {
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        $target_dir = "uploads/";
-        $space_img = $_FILES["space_img"]["name"];
-        $target_file = $target_dir . basename($_FILES["space_img"]["name"]);
-        move_uploaded_file($_FILES["space_img"]["tmp_name"], $target_file);
-        $db->Insert("INSERT INTO spaces (user_id, space_name, space_addr, space_location_state, space_type, space_desc, space_price,date_added, space_img, days_avail, time_range) VALUES (:uid, :name, :addr, :state, :type, :desc, :price, :date, :img, :days_avail, :time_range)", [
-            'uid' => $user['user_id'],
-            'name' => $_POST['space_name'],
-            'type' => $_POST['space_type'],
-            'desc' => $_POST['space_desc'],
-            'price' => $_POST['space_price'],
-            'addr' => $_POST['space_addr'],
-            'state' => $_POST['space_location_state'],
-            'days_avail' => json_encode($_POST['days_avail']),
-            'time_range' => $_POST['time_range'],
-            'date' => time(),
-            'img' => $space_img
-        ]);
+if ($profile) {
+    try {
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $target_dir = "uploads/";
+            $space_img = $_FILES["space_img"]["name"];
+            $target_file = $target_dir . basename($_FILES["space_img"]["name"]);
+            move_uploaded_file($_FILES["space_img"]["tmp_name"], $target_file);
+            $db->Insert("INSERT INTO spaces (user_id, space_name, space_addr, space_location_state, space_type, space_desc, space_price,date_added, space_img, days_avail, time_range) VALUES (:uid, :name, :addr, :state, :type, :desc, :price, :date, :img, :days_avail, :time_range)", [
+                'uid' => $user['user_id'],
+                'name' => $_POST['space_name'],
+                'type' => $_POST['space_type'],
+                'desc' => $_POST['space_desc'],
+                'price' => $_POST['space_price'],
+                'addr' => $_POST['space_addr'],
+                'state' => $_POST['space_location_state'],
+                'days_avail' => json_encode($_POST['days_avail']),
+                'time_range' => $_POST['time_range'],
+                'date' => time(),
+                'img' => $space_img
+            ]);
 
-        $_SESSION['msg'] = "Space Added Successfully";
-        $_SESSION['success'] = true;
-        header('Location: ./add-space');
+            $_SESSION['msg'] = "Space Added Successfully";
+            $_SESSION['success'] = true;
+            header('Location: ./add-space');
+            exit();
+        }
+    } catch (Exception $e) {
+        error_log($e);
+        $_SESSION['success'] = false;
+        $_SESSION['msg'] = "A server error has occured";
+
+        header("Location: ./add-space.php");
         exit();
     }
 } else {
@@ -152,7 +161,7 @@ if (isset($_SESSION['success']) && isset($_SESSION['msg'])) {
                     <div class="mb-2">
                         <label for="address" class="form-label">Select State</label>
                         <select id="inp_space_state" name="space_location_state" class="form-control"
-                            octavalidate="R,ALPHA_SPACES">
+                            octavalidate="R,TEXT">
                             <?php 
                             foreach($states as $i => $state) {
                             ?>
